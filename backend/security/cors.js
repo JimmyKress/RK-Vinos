@@ -3,7 +3,7 @@ import cors from 'cors'
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173'
 
 export const corsConfig = cors({
-  origin: FRONTEND_URL,
+  origin: [FRONTEND_URL, 'https://rkvinos.netlify.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
