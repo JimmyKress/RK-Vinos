@@ -1,0 +1,22 @@
+GET http://localhost:3000/whiteGET
+
+POST http://localhost:3000/postRED
+Content-Type: application/json
+
+{
+    "name": "vinoNombre",
+    "type": "Tinto",
+    "cepa": "cepa",
+    "pairing": "Texto de prueba"
+}
+
+PUT http://localhost:3000/putRED
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "vinoNombre",
+    "type": "Tinto",
+    "cepa": "cepa",
+    "pairing": "Texto de prueba"
+}

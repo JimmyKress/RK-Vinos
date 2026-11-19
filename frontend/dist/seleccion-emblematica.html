@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Selección Emblemática de Vinos Argentinos</title>
+
+  <style>
+    :root {
+      --burgundy: #671527;
+      --burgundy-dark: #57101f;
+      --cream: #f8f6f2;
+      --white: #ffffff;
+      --border: #ddd5cb;
+      --text: #242222;
+      --muted: #776b63;
+      --tag: #f0e9df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e9e6e1;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .static-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: #5a1f3f;
+      color: #f3f3f6;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding: 12px 0;
+    }
+
+    .static-header .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .static-header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 999px;
+      color: #f3f3f6;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 150ms ease;
+    }
+
+    .static-header-back:hover {
+      background: rgba(255,255,255,0.20);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .static-footer {
+      background: #5a1f3f;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0;
+      border-top: none;
+      padding: 0;
+    }
+
+    .static-footer .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .static-footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+      gap: 40px;
+      padding: 40px 0 36px;
+    }
+
+    .static-footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .static-footer-logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.6px;
+      line-height: 1;
+    }
+
+    .static-footer-logo span {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .static-footer-brand-desc {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.75);
+      max-width: 26ch;
+    }
+
+    .static-footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .static-footer-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .static-footer-social-btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .static-footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .static-footer-col h4 {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .static-footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .static-footer-col li,
+    .static-footer-col a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      cursor: pointer;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+
+    .static-footer-col a:hover {
+      color: #fff;
+    }
+
+    .static-footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding: 18px 0;
+    }
+
+    .static-footer-bottom-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1024px) {
+      .static-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        padding-top: 40px;
+        padding-bottom: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 30px 20px;
+        box-shadow: none;
+      }
+
+      .static-header {
+        padding: 10px 0;
+      }
+
+      .static-header-back {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .static-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 32px;
+        padding-bottom: 28px;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wine-image {
+        min-height: 150px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+      }
+
+      table {
+        min-width: 650px;
+      }
+
+      .closing-buttons {
+        flex-direction: column;
+      }
+
+      .closing-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 20px 16px;
+      }
+
+      .header h1 {
+        font-size: 26px;
+      }
+
+      .section-title {
+        font-size: 16px;
+      }
+
+      .product h2 {
+        font-size: 18px;
+      }
+
+      .featured h2 {
+        font-size: 20px;
+      }
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 25px auto;
+      padding: 18mm 16mm;
+      background: var(--cream);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* =========================
+       ENCABEZADO
+    ========================= */
+
+    .header {
+      text-align: center;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--burgundy);
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--burgundy);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+    .subtitle {
+      max-width: 750px;
+      margin: 8px auto 0;
+      color: #625b57;
+      font-size: 17px;
+      line-height: 1.3;
+      font-style: italic;
+    }
+
+    /* =========================
+       SECCIONES
+    ========================= */
+
+    .section-title {
+      margin: 17px 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+
+      color: var(--burgundy);
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       PRODUCTO DESTACADO
+    ========================= */
+
+    .featured {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+
+      padding: 16px;
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--burgundy);
+      border-radius: 7px;
+    }
+
+    .wine-image {
+      min-height: 190px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 8px;
+
+      background: #fcfaf7;
+      border: 1px solid #e4ddd4;
+      border-radius: 6px;
+
+      text-align: center;
+      color: #222;
+      font-size: 21px;
+      line-height: 1.05;
+    }
+
+    .wine-image span {
+      display: block;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 3px 8px;
+
+      background: var(--tag);
+      border-radius: 3px;
+
+      color: var(--burgundy);
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .product h2 {
+      margin: 0 0 3px;
+      font-size: 25px;
+      line-height: 1.05;
+    }
+
+    .location {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.28;
+    }
+
+    .pairing {
+      margin: 8px 0 0;
+      color: var(--burgundy);
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .pairing strong {
+      font-weight: 700;
+    }
+
+    /* =========================
+       GRID DE PRODUCTOS
+    ========================= */
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+
+      padding: 16px;
+
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+    }
+
+    .product-card .wine-image {
+      min-height: 180px;
+      font-size: 20px;
+    }
+
+    .product-card h2 {
+      margin: 0 0 4px;
+      font-size: 21px;
+      line-height: 1.05;
+    }
+
+    /* =========================
+       BANNER
+    ========================= */
+
+    .cta {
+      margin-top: 16px;
+      padding: 15px 20px;
+
+      background: var(--burgundy-dark);
+      color: white;
+
+      border-radius: 7px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 5px;
+      font-size: 23px;
+      font-weight: 400;
+    }
+
+    .cta p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+
+      margin-top: 12px;
+      padding-top: 10px;
+
+      border-top: 1px solid rgba(255,255,255,.3);
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    /* =========================
+       TABLA
+    ========================= */
+
+    .table-wrapper {
+      margin-top: 15px;
+      overflow: hidden;
+
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    th {
+      padding: 9px;
+      background: var(--burgundy);
+      color: white;
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 9px;
+      border-bottom: 1px solid #e4ddd5;
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* =========================
+       CIERRE
+    ========================= */
+
+    .closing {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .closing h2 {
+      margin: 0 0 5px;
+      color: var(--burgundy);
+      font-size: 24px;
+    }
+
+    .closing p {
+      margin: 0 0 16px;
+      font-size: 15px;
+      color: #625b57;
+    }
+
+    .closing-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .closing-buttons a {
+      display: inline-block;
+      padding: 10px 24px;
+      background: var(--burgundy);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .closing-buttons a:hover {
+      background: var(--burgundy-dark);
+    }
+
+    .closing-buttons a.whatsapp {
+      background: #25D366;
+    }
+
+    .closing-buttons a.whatsapp:hover {
+      background: #128C7E;
+    }
+
+    /* =========================
+       SEGUNDA PÁGINA
+    ========================= */
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 800px) {
+      body {
+        background: var(--cream);
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 30px 20px;
+        box-shadow: none;
+      }
+
+      .header h1 {
+        font-size: 26px;
+      }
+
+      .featured {
+        grid-template-columns: 110px 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .featured,
+      .product-card {
+        grid-template-columns: 1fr;
+      }
+
+      .wine-image {
+        min-height: 150px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+      }
+
+      table {
+        min-width: 650px;
+      }
+    }
+
+    /* =========================
+       IMPRESIÓN
+    ========================= */
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        padding: 18mm 16mm;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="static-header">
+    <div class="container">
+      <a href="http://localhost:5173" class="static-header-back">
+        ← Volver al sitio
+      </a>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       PÁGINA 1
+  ====================================================== -->
+
+  <main class="page">
+
+    <header class="header">
+      <p class="eyebrow">Guía exclusiva de sommelier</p>
+
+      <h1>Selección Emblemática de Vinos Argentinos</h1>
+
+      <p class="subtitle">
+        Una cuidada cata visual de etiquetas destacadas de Mendoza y San Rafael.
+        Desde la elegancia del Malbec de autor hasta sorpresas de autor y
+        ediciones de hielo.
+      </p>
+    </header>
+
+
+    <!-- ÍCONO DE ALTA GAMA -->
+
+    <h2 class="section-title">
+      Ícono de alta gama
+    </h2>
+
+    <article class="featured">
+
+      <div class="wine-image">
+        <img src="img/Alae Malbec — Viña Las Perdices.jpg" alt="Alae Malbec" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+
+      <div class="product">
+
+        <span class="tag">
+          Vino de autor • Gran reserva
+        </span>
+
+        <h2>
+          Alae Malbec — Viña Las Perdices
+        </h2>
+
+        <p class="location">
+          Agrelo, Luján de Cuyo, Mendoza
+        </p>
+
+        <p class="description">
+          Un exponente supremo de elegancia y complejidad.
+          Presenta profundas notas a frutos negros maduros,
+          violetas, cacao y suaves matices tostados aportados
+          por su prolongada crianza en roble francés.
+          Taninos sedosos, estructura imponente y final persistente.
+        </p>
+
+        <p class="pairing">
+          <strong>Maridaje ideal:</strong>
+          Cortes de carne a la parrilla, osobuco braseado y quesos madurados.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- TINTOS -->
+
+    <h2 class="section-title">
+      Tintos con carácter y colección
+    </h2>
+
+    <section class="product-grid">
+
+      <article class="product-card">
+
+        <div class="wine-image">
+          <img src="img/jorge.png" alt="Jorge Rubio" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+
+        <div class="product">
+
+          <span class="tag">
+            Edición artesanal
+          </span>
+
+          <h2>
+            Jorge Rubio Privado Reserva
+          </h2>
+
+          <p class="location">
+            Oasis Sur, San Rafael, Mendoza
+          </p>
+
+          <p class="description">
+            Reconocido por su icónica etiqueta de cuero.
+            Destaca por aromas a mermelada de ciruela,
+            vainilla y chocolate. En boca es untuoso,
+            equilibrado y muy amable.
+          </p>
+
+          <p class="pairing">
+            <strong>Maridaje:</strong>
+            Pastas con salsa boloñesa y empanadas criollas.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <div class="wine-image">
+          <img src="img/Las Perdices Reserva.jpg" alt="Las Perdices Reserva" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+
+        <div class="product">
+
+          <span class="tag">
+            Caja regalo x3
+          </span>
+
+          <h2>
+            Las Perdices Reserva Malbec
+          </h2>
+
+          <p class="location">
+            Agrelo, Luján de Cuyo, Mendoza
+          </p>
+
+          <p class="description">
+            Presentación especial en estuche de madera.
+            Un vino sofisticado con intenso color rojo rubí,
+            frutado, con sutiles notas a café y tabaco.
+            Excelente potencial de guarda.
+          </p>
+
+          <p class="pairing">
+            <strong>Maridaje:</strong>
+            Bife de chorizo, cordero y pastas con hongos.
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <h2>
+        ¿Desea adquirir esta colección o armar un pedido personalizado?
+      </h2>
+
+      <p>
+        Aproveche nuestros beneficios exclusivos para sommelieres,
+        eventos corporativos y coleccionistas exigentes.
+      </p>
+
+      <div class="benefits">
+        <span>✓ Envíos refrigerados asegurados</span>
+        <span>✓ Asesoramiento sommelier sin cargo</span>
+        <span>✓ Descuentos por caja cerrada</span>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       PÁGINA 2
+  ====================================================== -->
+
+  <main class="page page-break">
+
+    <header class="header">
+      <p class="eyebrow">
+        Guía exclusiva de sommelier
+      </p>
+
+      <h1>
+        Selección Emblemática de Vinos Argentinos
+      </h1>
+
+      <p class="subtitle">
+        Guía de etiquetas · Página 1 de 2
+      </p>
+    </header>
+
+
+    <!-- ROSADOS -->
+
+    <h2 class="section-title">
+      Frescura, rosados y especialidades únicas
+    </h2>
+
+    <section class="product-grid">
+
+      <article class="product-card">
+
+        <div class="wine-image">
+          <img src="img/Partridge Red Blend.jpg" alt="Partridge Red Blend" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+
+        <div class="product">
+
+          <span class="tag">
+            Corte versátil
+          </span>
+
+          <h2>
+            Partridge Red Blend
+          </h2>
+
+          <p class="location">
+            Viña Las Perdices, Mendoza
+          </p>
+
+          <p class="description">
+            Un ensamblaje armónico que combina la jugosidad
+            de la fruta fresca con especias delicadas.
+            Taninos amables y trago fluido, ideal para
+            cualquier ocasión social.
+          </p>
+
+          <p class="pairing">
+            <strong>Maridaje:</strong>
+            Pizzas artesanales, guisos suaves y tablas de fiambres.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="product-card">
+
+        <div class="wine-image">
+          <span>
+            Finca<br>
+            Gabriel<br>
+            Rosé<br>
+            Malbec
+          </span>
+        </div>
+
+        <div class="product">
+
+          <span class="tag">
+            Finca Gabriel • Rosé
+          </span>
+
+          <h2>
+            Jorge Rubio Rosé de Malbec
+          </h2>
+
+          <p class="location">
+            San Rafael, Mendoza
+          </p>
+
+          <p class="description">
+            De atractivo color rosado tenue.
+            Expresivo aroma a frutillas, frambuesas y notas cítricas.
+            En boca es fresco, vivaz y muy refrescante,
+            con acidez equilibrada.
+          </p>
+
+          <p class="pairing">
+            <strong>Maridaje:</strong>
+            Ensaladas gourmet, sushi, mariscos y aperitivos.
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- ICE WINE -->
+
+    <article class="featured" style="margin-top:16px;">
+
+      <div class="wine-image">
+        <span>
+          Las Perdices<br>
+          Ice Wine<br>
+          Rosé
+        </span>
+      </div>
+
+      <div class="product">
+
+        <span class="tag">
+          Edición especial de hielo
+        </span>
+
+        <h2>
+          Las Perdices Ice Wine Rosé
+        </h2>
+
+        <p class="location">
+          Agrelo, Luján de Cuyo, Mendoza
+        </p>
+
+        <p class="description">
+          Una joya enológica elaborada con uvas cosechadas
+          a temperaturas bajo cero. De dulzura natural concentrada
+          y acidez punzante que evita la sensación empalagosa.
+          Notas de frutos rojos confitados, miel y delicados
+          aromas florales. Presentación refinada de 375 ml.
+        </p>
+
+        <p class="pairing">
+          <strong>Maridaje ideal:</strong>
+          Postres de frutas frescas, tartas de frutilla,
+          queso azul y sobremesa.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- TABLA -->
+
+    <h2 class="section-title">
+      Tabla comparativa de selección
+    </h2>
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Etiqueta</th>
+            <th>Varietal / Tipo</th>
+            <th>Perfil de Cuerpo</th>
+            <th>Ocasión Recomendada</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Alae Malbec</td>
+            <td>100% Malbec Gran Reserva</td>
+            <td>Robusto / Complejo</td>
+            <td>Cenas de gala, regalos premium</td>
+          </tr>
+
+          <tr>
+            <td>Jorge Rubio Privado Malbec Reserva</td>
+            <td>Malbec</td>
+            <td>Medio-Alto / Sedoso</td>
+            <td>Reuniones familiares, asados</td>
+          </tr>
+
+          <tr>
+            <td>Las Perdices Reserva Malbec (Caja x3)</td>
+            <td>Malbec</td>
+            <td>Estructurado / Elegante</td>
+            <td>Regalos corporativos, guarda</td>
+          </tr>
+
+          <tr>
+            <td>Partridge Blend</td>
+            <td>Red Blend</td>
+            <td>Medio / Frutal</td>
+            <td>Consumo cotidiano, tapeos</td>
+          </tr>
+
+          <tr>
+            <td>Jorge Rubio Rosé</td>
+            <td>Rosado de Malbec</td>
+            <td>Ligero / Fresco</td>
+            <td>Tardes de verano, aperitivos</td>
+          </tr>
+
+          <tr>
+            <td>Ice Wine Rosé</td>
+            <td>Vino Dulce Natural de Hielo</td>
+            <td>Concentrado / Frutal</td>
+            <td>Postre, brinda especial</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- CIERRE -->
+
+    <section class="closing">
+
+      <h2>
+        Ordene sus botellas hoy mismo
+      </h2>
+
+      <p>
+        Consulte por nuestra propuesta para compras mayoristas,
+        combos mixtos o envíos a domicilio.
+      </p>
+
+      <div class="closing-buttons">
+        <a href="http://localhost:5173" target="_blank">
+          Volver al inicio
+        </a>
+        <a href="https://wa.me/5491155555555?text=Hola,%20me%20interesa%20la%20Selección%20Emblemática%20de%20vinos" target="_blank" class="whatsapp">
+          Contactar por WhatsApp
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="static-footer">
+    <div class="container">
+      <div class="static-footer-grid">
+        <!-- Marca -->
+        <div class="static-footer-brand">
+          <div class="static-footer-logo">RK <span>Vinos</span></div>
+          <p class="static-footer-brand-desc">
+            Los mejores vinos argentinos, seleccionados con criterio y pasión.
+            Envíos a todo el país.
+          </p>
+          <div class="static-footer-socials">
+            <a href="#" aria-label="Instagram" class="static-footer-social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="static-footer-social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="WhatsApp" class="static-footer-social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Ayuda -->
+        <div class="static-footer-col">
+          <h4>AYUDA</h4>
+          <ul>
+            <li><a href="http://localhost:5173/catalogo">Cómo comprar</a></li>
+            <li><a href="#">Envíos</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="static-footer-col">
+          <h4>CONTACTO</h4>
+          <ul>
+            <li>📞 (011) 4000-0000</li>
+            <li>💬 WhatsApp disponible</li>
+            <li>🕐 Lun–Vie 9 a 18 hs.</li>
+            <li>✉️ info@rkvinos.com.ar</li>
+          </ul>
+        </div>
+
+        <!-- Comprar -->
+        <div class="static-footer-col">
+          <h4>COMPRAR</h4>
+          <ul>
+            <li><a href="http://localhost:5173/categoria/tinto">Vinos Tintos</a></li>
+            <li><a href="http://localhost:5173/categoria/blanco">Vinos Blancos</a></li>
+            <li><a href="http://localhost:5173/categoria/espumante">Espumantes</a></li>
+            <li><a href="http://localhost:5173/catalogo">Ver todo el catálogo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="static-footer-bottom">
+        <div class="static-footer-bottom-inner">
+          <span>© 2026 RK Vinos. Todos los derechos reservados. · Beber con moderación. Prohibida la venta a menores de 18 años.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
