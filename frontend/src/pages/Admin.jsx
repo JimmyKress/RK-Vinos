@@ -38,9 +38,9 @@ export const CONFIG_INIT = {
     logoImage: ''
   },
   slides: [
-    { title: 'Selección Emblemática', subtitle: 'Pedidos personalizados', mediaType: 'image', mediaUrl: '/img/slide-novedad-1.jpg', mediaFileName: 'slide-novedad-1.svg', published: true },
-    { title: 'Nueva Colección', subtitle: 'Gran Reservas seleccionadas para esta temporada', mediaType: 'image', mediaUrl: '/img/slide-novedad-2.svg', mediaFileName: 'slide-novedad-2.svg', published: true },
-    { title: 'Espumantes Premium', subtitle: 'Brut · Extra Brut · Nature · Rosados. Perfectos para cada celebración', mediaType: 'image', mediaUrl: '/img/slide-novedad-3.svg', mediaFileName: 'slide-novedad-3.svg', published: true },
+    { title: 'Selección Emblemática', subtitle: 'Pedidos personalizados', mediaType: 'image', mediaUrl: '/carrousel1.jpg', mediaFileName: 'carrousel1.jpg', published: true },
+    { title: 'Nueva Colección', subtitle: 'Gran Reservas seleccionadas para esta temporada', mediaType: 'image', mediaUrl: '/carousel2.avif', mediaFileName: 'carousel2.avif', published: true },
+    { title: 'Espumantes Premium', subtitle: 'Brut · Extra Brut · Nature · Rosados. Perfectos para cada celebración', mediaType: 'image', mediaUrl: '/carousel3.avif', mediaFileName: 'carousel3.avif', published: true },
   ],
   hero: {
     title: 'RK Vinos',

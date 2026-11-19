@@ -118,7 +118,7 @@ export default function PromoCarousel() {
             >
               {/* Media de fondo (imagen o video) */}
               {s.mediaType === 'image' && s.mediaUrl && (
-                <div 
+                <div
                   className="promoMediaBg"
                   style={{
                     position: 'absolute',
@@ -127,9 +127,11 @@ export default function PromoCarousel() {
                     width: '100%',
                     height: '100%',
                     backgroundImage: `url('${s.mediaUrl}')`,
-                    backgroundSize: 'cover',
+                    backgroundSize: '100% auto',
                     backgroundPosition: 'center center',
-                    zIndex: 0
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 0,
+                    backgroundColor: '#000'
                   }}
                 />
               )}
