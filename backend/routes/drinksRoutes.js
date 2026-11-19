@@ -41,10 +41,6 @@ const ROUTE_ROSE_WINES = process.env.ROUTE_ROSE_WINES || '/getROSE';
 const ROUTE_ALL_WINES = process.env.ROUTE_ALL_WINES || '/getAllWines';
 
 //PARA RED
-router.get(ROUTE_RED_WINES, (req, res) => {
-    res.send({meagge:"RED OK"});
-});
-
 router.get(ROUTE_RED_WINES, redGET);
 router.post("/postRED", redPOST);
 router.put("/putRED", redPUT);
@@ -52,11 +48,6 @@ router.delete("/deleteRED/:id", redDELETE);
 router.put("/red-wine/:id/hidden", toggleRedHidden);
 
 //PARA WHITE
-router.get(ROUTE_WHITE_WINES, (req, res) => {
-    res.send({meagge:"RED OK"});
-});
-
-
 router.get(ROUTE_WHITE_WINES, whiteGET);
 router.post("/postWHITE", whitePOST);
 router.put("/putWHITE", whitePUT);
@@ -64,10 +55,6 @@ router.delete("/deleteWHITE/:id", whiteDELETE);
 router.put("/white-wine/:id/hidden", toggleWhiteHidden);
 
 //PARA ROSE
-router.get(ROUTE_ROSE_WINES, (req, res) => {
-    res.send({meagge:"RED OK"});
-});
-
 router.get(ROUTE_ROSE_WINES, roseGET);
 router.post("/postROSE", rosePOST);
 router.put("/putROSE", rosePUT);
